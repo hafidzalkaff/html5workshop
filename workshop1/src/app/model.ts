@@ -1,5 +1,4 @@
 export interface LineItem {
-    image : string;
     label : string;
-  
+    quantity : number;
 }
