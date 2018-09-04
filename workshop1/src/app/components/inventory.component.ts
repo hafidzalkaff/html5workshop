@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
-import { LineItem } from '@angular/forms';
+import { LineItem } from '../model';
 
-export interface Fruit {
+interface Fruit {
   image : string;
   label : string;
 
