@@ -1,0 +1,38 @@
+<!--
+<p>
+  inventory works!
+</p>
+-->
+
+
+<!--<form #myShoppingCart = "ngform" (click) = "UpdateCart(myShoppingCart)"> -->
+<form #inventoryForm = "ngForm" (ngSubmit)= "add(inventoryForm)">
+
+  <table>
+    <tr>
+      <td>
+        <div>
+          <select name="fruitsList" id="" ngModel (change)="displayFruit($event)">
+            <option *ngFor="let f of fruitsList; let i = index" [value] = "i" > {{f.label}} </option>
+          </select>
+        </div>
+        <div>
+          <!--img src="assets\fruits\apple.png" class="thumbnail" --> 
+          <img [src]="fruitImage" class="thumbnail"> 
+        </div>
+      </td>
+      <td>
+        <div>
+            Quantity:
+        </div>
+
+        <div>
+          <input type="number" name="quantity" min="1" ngModel required>
+        </div>
+        <button type = "submit">Add</button>
+      </td>
+    </tr>
+
+  </table>
+
+</form>
