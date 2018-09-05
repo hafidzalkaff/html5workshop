@@ -44,8 +44,8 @@ export class InventoryComponent implements OnInit {
 
   add(form: NgForm){
       console.log("Form : ", form.value);
-      console.log(this.selectedFruit.length);
-      console.log(form.value.quantity);
+      //console.log(this.selectedFruit.length);
+      //console.log(form.value.quantity);
     
     if(this.selectedFruit.length <= 0){
       alert("Sorry, no fruits selected.");

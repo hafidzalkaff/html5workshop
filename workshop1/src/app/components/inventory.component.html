@@ -22,6 +22,7 @@
         <div>
           <!--img src="assets\fruits\apple.png" class="thumbnail" --> 
           <!--img [src]="fruitImage" class="thumbnail" --> 
+          <div *ngIf="fruitImage == ''">*No Image</div>
         </div>
       </td>
       <td>
@@ -32,7 +33,7 @@
         <div>
           <input type="number" name="quantity" min="1" ngModel required>
         </div>
-        <button type = "submit">Add</button>
+        <button type = "submit" [disabled]="inventoryForm.invalid">Add</button>
       </td>
     </tr>
     <tr>

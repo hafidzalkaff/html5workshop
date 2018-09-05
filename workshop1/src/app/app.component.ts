@@ -15,4 +15,11 @@ export class AppComponent {
     
   }
 
+  deleteLineItem(lineItem: LineItem){
+    console.log("Delete Item", lineItem);
+    this.cart.splice(this.cart.indexOf(lineItem)-1,1);
+    console.log("Remaining cart = ",this.cart)
+    
+  }
+
 }

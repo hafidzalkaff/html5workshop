@@ -23,10 +23,20 @@
 
 <h1>My Shopping Cart</h1>
 <app-inventory (newLineItem) = "processLineItem($event)"></app-inventory>
-<ul>
-  <li *ngFor="let c of cart; let i=index" >{{c.label}}{{c.quantity}}</li>
+<div *ngIf="cart.length <=0">
+  Your cart is empty
+</div>
 
-</ul>
+<div *ngIf="cart.length >0">
+  Your cart has {{cart.length}} item(s)
+  <ul >
+    <li *ngFor="let c of cart; let i=index" >{{c.label}} - {{c.quantity}} <button type="button" (click)="deleteLineItem($event)">Delete Item</button></li>
+    
+  </ul>
+    
+</div>
+
+
 
 
 

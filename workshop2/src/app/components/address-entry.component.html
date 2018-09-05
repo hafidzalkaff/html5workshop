@@ -1,0 +1,62 @@
+<form #form = "ngForm" (ngSubmit)= "processForm(form)" fxLayout = "column row" fxLayoutGap =  "5px">
+    
+  <mat-form-field>
+    <div>
+        <input type="text" name="name" placeholder="Please enter your name" ngModel matInput required>
+    </div>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <div>
+        <input type="text" name="address" placeholder="Please enter your address" ngModel matInput required>
+    </div>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <div>
+        <input type="text" name="phone" length="50" placeholder="Please enter your phone number" ngModel matInput required>
+    </div>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <div>
+        <input type="text" name="email" placeholder="Please enter your email " ngModel matInput required>
+    </div>
+  </mat-form-field> 
+  <br> 
+  <div fxLayout = "row column" fxLayoutAlign="space-between">
+      <button type="reset" mat-raised-button color = "accent">
+          <mat-icon>clear</mat-icon> 
+          Clear
+        </button>
+        
+  <button type = "submit" [disabled]="form.invalid" mat-raised-button color = "accent">
+    <mat-icon>add</mat-icon>  
+      Add
+    </button>
+  </div>  
+  
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<p>
+  address-entry works!
+</p>
+
+-->

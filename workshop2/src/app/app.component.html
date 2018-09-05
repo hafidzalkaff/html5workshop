@@ -1,4 +1,48 @@
+<mat-toolbar color = "primary">
+  <img src="assets/addressbook.png" class="logo">
+  <!--<mat-icon></mat-icon>-->
+  My Address Book
+</mat-toolbar>
+<app-address-entry (newAddress)= "processAddress($event)">
+
+</app-address-entry>
+
+<mat-tab-group (selectedTabChange) = "loadAddress($event)">
+  <mat-tab *ngFor="let t of tabs" [label] = "t.label">
+    content here
+  </mat-tab>
+
+</mat-tab-group>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--The content below is only a placeholder and can be replaced.-->
+<!--
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -17,4 +61,4 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>
-
+-->
