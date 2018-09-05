@@ -43,17 +43,40 @@ export class InventoryComponent implements OnInit {
   }
 
   add(form: NgForm){
-    console.log("Form : ", form.value);
-    const LineItem: LineItem = {
-      label: this.selectedFruit,
-      quantity: form.value.quantity
+      console.log("Form : ", form.value);
+      console.log(this.selectedFruit.length);
+      console.log(form.value.quantity);
+    
+    if(this.selectedFruit.length <= 0){
+      alert("Sorry, no fruits selected.");
+    }
+    else if(form.value.quantity != "" || form.value.quantity != null){
+      if(form.value.quantity > 0){
+        //construct the payload
+        const LineItem: LineItem = {
+          label: this.selectedFruit,
+          quantity: form.value.quantity
+        };
 
-    };
-    this.newLineItem.next(LineItem);
+        //fire the event with the payload
+        this.newLineItem.next(LineItem);
+      }
+      else if(form.value.quantity == 0){
+        alert("Sorry, amount for the selected fruit has to be greater than 0.");
+      }
+      else{
+        alert("Sorry, please select a valid amount for the selected fruit.");
+      }
+      
+    }
+    else {
+      
+    }
 
     form.resetForm();
     this.selectedFruit = "";
     this.fruitImage = "";
+    
 
   }
 

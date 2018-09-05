@@ -7,18 +7,21 @@
 
 <!--<form #myShoppingCart = "ngform" (click) = "UpdateCart(myShoppingCart)"> -->
 <form #inventoryForm = "ngForm" (ngSubmit)= "add(inventoryForm)">
-
+  //Form Completed: {{inventoryForm.valid}}
   <table>
     <tr>
       <td>
+          <div>
+              Fruit:
+          </div>
         <div>
-          <select name="fruitsList" id="" ngModel (change)="displayFruit($event)">
+          <select name="fruitsList" id="" ngModel (change)="displayFruit($event)" required>
             <option *ngFor="let f of fruitsList; let i = index" [value] = "i" > {{f.label}} </option>
           </select>
         </div>
         <div>
           <!--img src="assets\fruits\apple.png" class="thumbnail" --> 
-          <img [src]="fruitImage" class="thumbnail"> 
+          <!--img [src]="fruitImage" class="thumbnail" --> 
         </div>
       </td>
       <td>
@@ -32,7 +35,21 @@
         <button type = "submit">Add</button>
       </td>
     </tr>
+    <tr>
+      <td>
+        <div>
+          <!--img src="assets\fruits\apple.png" class="thumbnail" --> 
+          <img [src]="fruitImage" class="thumbnail"> 
+        </div>
+      </td>
+      <td></td>
+
+    </tr>
+
 
   </table>
+  
+
+
 
 </form>
