@@ -10,7 +10,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 })
 export class AppComponent implements OnInit {
   //title = 'workshop2';
-
+  outputAddress: Address[] = [];
   private tabs = [
     {label: 'A-E', pattern: /^[a-e].*/i}, 
     {label: 'F-J', pattern: /^[f-j].*/i}, 
@@ -54,6 +54,8 @@ export class AppComponent implements OnInit {
     this.addressSvc.findAddress(patt)
       .then((addr : Address[]) => {
         console.log("findaddress", addr);
+        this.outputAddress = addr;
+        //console.log("outputAddress", this.outputAddress);
       })
       .catch(err => {
         console.log("error", err);
