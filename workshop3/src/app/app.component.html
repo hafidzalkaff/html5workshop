@@ -1,4 +1,22 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<h1>Star Wars</h1>
+
+<form #form="ngForm" (ngSubmit)="search(form)">
+  People ID : 
+  <input type="number" name="peopleId" min="1" required ngModel>
+  <button type="submit" name="Search" [disabled]="form.invalid">Search</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+<!--The content below is only a placeholder and can be replaced.
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -18,3 +36,4 @@
   </li>
 </ul>
 
+-->
