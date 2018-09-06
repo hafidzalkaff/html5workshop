@@ -9,9 +9,25 @@
 
 <mat-tab-group (selectedTabChange) = "loadAddress($event)">
   <mat-tab *ngFor="let t of tabs" [label] = "t.label">
-    <mat-list>
-        <mat-list-item *ngFor="let o of outputAddress"> {{Address}} </mat-list-item>
+    <app-address-list [addresses]="currentaddresses"></app-address-list>
+    <!--
+    <mat-list *ngIf="outputAddress.length == 0">
+      <mat-list-item > No address found.
+      </mat-list-item>
     </mat-list>
+    <mat-list *ngIf="outputAddress.length > 0">
+        <app-address-list></app-address-list>
+        <mat-list-item *ngFor="let o of outputAddress" > 
+            <h3 matLine> {{o.name}} </h3>
+                <p matLine>
+                    <span> Phone: {{o.phone}} </span>
+                    <span> Phone: {{o.phone}} </span>
+                    <span> Email: {{o.email}} </span>
+                </p>
+         
+        </mat-list-item>
+    </mat-list>
+    -->
   </mat-tab>
 
 </mat-tab-group>
