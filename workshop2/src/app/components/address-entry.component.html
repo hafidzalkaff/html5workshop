@@ -30,7 +30,7 @@
           Clear
         </button>
         
-  <button type = "submit" [disabled]="form.invalid" mat-raised-button color = "accent">
+  <button type = "submit" [disabled]="form.invalid" mat-raised-button color = "accent" (click)="openSnackBar()">
     <mat-icon>add</mat-icon>  
       Add
     </button>

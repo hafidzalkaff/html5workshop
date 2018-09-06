@@ -10,8 +10,7 @@ export class AddressListComponent implements OnInit {
 
   @Input()
   addresses: Address[] = [];
-  
-  
+    
   constructor() { }
 
   ngOnInit() {

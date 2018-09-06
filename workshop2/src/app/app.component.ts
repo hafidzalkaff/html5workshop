@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Address } from './model';
 import { AddressService } from './address.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -47,9 +48,13 @@ export class AppComponent implements OnInit {
     console.log('address: ', address);
     this.addressSvc.addNewAddress(address)
       .then(result => {
-        //TODO: Check if new address is visible
-
+        //Check if new address is visible
+        if(this.tabs[this.currentTab].pattern.test(address.name)){
+          //this.loadAddress(this.tabs[this.currentTab].pattern);
+          console.log("Reload Info in tab");
+        }
         console.log('Saved: ', result)
+        //this.snackBar.open("Saved Info", "Dismiss",{duration:3000})
       })
       .catch(err => {
         console.error('Err: ', err);

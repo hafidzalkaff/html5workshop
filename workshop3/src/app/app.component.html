@@ -1,66 +1,37 @@
 <mat-toolbar color = "primary">
-  <img src="assets/addressbook.png" class="logo">
-  <!--<mat-icon></mat-icon>-->
-  My Address Book
+  Giphy
 </mat-toolbar>
-<app-address-entry (newAddress)= "processAddress($event)">
 
-</app-address-entry>
+<form #searchForm="ngForm" fxLayout = "row column" fxLayoutAlign="space-between center" ngSubmit="search(searchForm)">
+  <mat-form-field fxLayoutAlign="stretch">
+    <input type = "text" name="searchTerm" placeholder="What is it that you seek" ngModel required matInput>
 
-<mat-tab-group (selectedTabChange) = "loadAddress($event)">
-  <mat-tab *ngFor="let t of tabs" [label] = "t.label">
-    <app-address-list [addresses]="currentAddress"></app-address-list>
-    <!--
-    <mat-list *ngIf="outputAddress.length == 0">
-      <mat-list-item > No address found.
-      </mat-list-item>
-    </mat-list>
-    <mat-list *ngIf="outputAddress.length > 0">
-        <app-address-list></app-address-list>
-        <mat-list-item *ngFor="let o of outputAddress" > 
-            <h3 matLine> {{o.name}} </h3>
-                <p matLine>
-                    <span> Phone: {{o.phone}} </span>
-                    <span> Phone: {{o.phone}} </span>
-                    <span> Email: {{o.email}} </span>
-                </p>
-         
-        </mat-list-item>
-    </mat-list>
-    -->
-  </mat-tab>
+  </mat-form-field>
 
-</mat-tab-group>
+  <button mat-raised-button type="submit" color = "accent" [disabled]="searchForm.invalid">
+    <mat-icon >search</mat-icon>
+  </button>
+</form>
+
+<div fxLayout="row column" fxLayoutGap="5px" class="space-10">
+
+<mat-card *ngFor="let g for giphys">
+  <mat-card-header>
+      <mat-card-title>
+        </mat-card-title>
+      
+
+  </mat-card-header>
+
+</mat-card>
+</div>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--The content below is only a placeholder and can be replaced.-->
-<!--
+<!--The content below is only a placeholder and can be replaced.
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -79,4 +50,6 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>
+
 -->
+
