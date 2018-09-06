@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Address } from './model';
 import { AddressService } from './address.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   //private addressService: AddressService;
 
   //svc is injected into the component
-  constructor(private addressSvc: AddressService){
+  constructor(private addressSvc: AddressService, private snackBar : MatSnackBar ){
     
   }
 
@@ -50,23 +50,19 @@ export class AppComponent implements OnInit {
       .then(result => {
         //Check if new address is visible
         if(this.tabs[this.currentTab].pattern.test(address.name)){
-          //this.loadAddress(this.tabs[this.currentTab].pattern);
+          this.reloadAddress(this.tabs[this.currentTab].pattern);
           console.log("Reload Info in tab");
         }
         console.log('Saved: ', result)
-        //this.snackBar.open("Saved Info", "Dismiss",{duration:3000})
+        this.snackBar.open("Saved Info", "Dismiss",{duration:3000})
       })
       .catch(err => {
         console.error('Err: ', err);
       });
   }
 
-  loadAddress(event: MatTabChangeEvent){
-    this.currentTab - event.index;
-    const patt = this.tabs[event.index].pattern;
-    console.log('event', patt, typeof(patt));
-
-    this.addressSvc.findAddress(patt)
+  reloadAddress(pattInput : RegExp){
+    this.addressSvc.findAddress(pattInput)
       .then((addr : Address[]) => {
         console.log("findaddress", addr);
         this.currentAddress = addr;
@@ -79,7 +75,13 @@ export class AppComponent implements OnInit {
       .catch(err => {
         console.log("error", err);
       })
+  }
 
+  loadAddress(event: MatTabChangeEvent){
+    this.currentTab = event.index;
+    const patt = this.tabs[event.index].pattern;
+    console.log('event', patt, typeof(patt));
+    this.reloadAddress(patt);
   }
 
 }
