@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { StarWarsService } from './starwars.service';
 import { StarWarsDatabaseService } from './starwars.storage.service';
+import { People } from './model';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class AppComponent {
     'species'
   ]
 
-
+  people : People = null;
   constructor(private starwarssvc: StarWarsService, private swdbsvc: StarWarsDatabaseService) { }
 
 
@@ -29,15 +30,19 @@ export class AppComponent {
   
   search(){
     console.log('people id: ', this.form.value.peopleId);
+  
+    this.people = null;
     
     this.swdbsvc.find(this.form.value.peopleId)
       .then(
-        (result) => {
+        (result:People) => { //resolve
           console.log('found it: ', result);
+          this.people = this.people || result;
+          return(null);
         },
-        (err) => {
-          console.log('people not found: ',err);
-          this.starwarssvc.searchPeople.bind(this.starwarssvc)
+        (datarejectid) => { //reject
+          console.log('not in database: ',datarejectid);
+          this.starwarssvc.searchPeople.bind(this.starwarssvc) //reject
         }
       )
       .then(

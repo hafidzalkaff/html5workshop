@@ -13,7 +13,7 @@ export class StarWarsService{
     }
 
     searchPeople(id:number): Promise<People>{
-        //console.log('id passed in : ',id);
+        console.log('Search People');
         return(
             //this.http.get<People>(URL + id)                                         //string concatenation
             //    .toPromise()                                               
