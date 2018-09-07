@@ -12,13 +12,13 @@ import { People } from './model';
 export class AppComponent {
   //title = 'workshop3';
   
-  private category = [
-    'planets',
-    'spaceships',
-    'vehicles',
-    'people',
-    'films',
-    'species'
+  private categories = [
+    { label : 'planets'},
+    { label : 'spaceships'},
+    { label : 'vehicles'},
+    { label : 'people'},
+    { label : 'films'},
+    { label : 'species'}
   ]
 
   people : People = null;

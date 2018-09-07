@@ -1,0 +1,29 @@
+<mat-toolbar color ='primary' fxLayout = "row column" fxLayoutAlign =  "space-between center">
+
+    <span fxLayout = "row column" fxLayoutAlign =  "start center">
+      <img src="\assets\Star_Wars_icon.png" class = "icon">
+      Star Wars
+    </span>
+      
+    <button type="button" mat-icon-button color = "accent" (click)="goBack()"> <!--[routerLink]="['add']"-->
+      <mat-icon>backspace</mat-icon></button>
+      
+  </mat-toolbar>
+
+<mat-card class="card" (swipe)="back()">
+    <mat-card-header>
+      <mat-card-title>{{ people?.name }}</mat-card-title>
+      <mat-card-subtitle>{{ people?.birth_year }}</mat-card-subtitle>
+    </mat-card-header>
+    <img [src]="people?.image" mat-card-image>
+    <mat-card-content>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione, ducimus quisquam omnis, architecto sit rem veniam optio fugiat ut, exercitationem tenetur placeat esse dolore vitae! Nesciunt autem a magni. Et?
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="end">
+      <button type="button" mat-icon-button color="primary" [disabled]="!canShare"
+          (click)="share()">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-card-actions>
+  
+  </mat-card>

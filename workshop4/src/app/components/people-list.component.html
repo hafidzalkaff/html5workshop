@@ -1,0 +1,19 @@
+<mat-toolbar color ='primary' fxLayout = "row column" fxLayoutAlign =  "space-between center">
+
+<span fxLayout = "row column" fxLayoutAlign =  "start center">
+  <img src="\assets\Star_Wars_icon.png" class = "icon">
+  Star Wars
+</span>
+  
+  
+<button type="button" mat-icon-button color = "accent" (click)="addPeople()"> <!--[routerLink]="['add']"-->
+  <mat-icon>add_circle</mat-icon></button>
+
+</mat-toolbar>
+
+<mat-nav-list>
+    <h2 mat-sub-header>Characters</h2>
+    <a *ngFor="let p of people" [routerLink]="['/show', p.id]" mat-list-item>{{p.name}} ({{p.id}})</a>
+
+          <!--[routerLink]="'/detail', p.id"-->
+  </mat-nav-list>
