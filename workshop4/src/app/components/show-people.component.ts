@@ -14,9 +14,14 @@ import { People } from '../model';
   styleUrls: ['./show-people.component.css']
 })
 export class ShowPeopleComponent implements OnInit {
-
+  
   canShare = false;
   people : People;
+
+  x: number = 0;
+  y: number = 0;
+  startX: number = 0;
+  startY: number = 0;
 
   constructor(private router: Router, private activatedRoute:ActivatedRoute, private swdbSvc:StarWarsDatabaseService, private snackBar:MatSnackBar) { }
 
@@ -48,6 +53,17 @@ export class ShowPeopleComponent implements OnInit {
     })
   }
 
+  scrollPage(event:any){
+    //console.log('event:', event);
+
+    if(event.type == "panup"){
+      console.log('scrollDown');
+    }
+    else if(event.type == "pandown"){
+      console.log('scrollUp');
+    }
+    window.scroll(0,event.deltaY);
+  }
 
   goBack(){
     this.router.navigate(['/']);

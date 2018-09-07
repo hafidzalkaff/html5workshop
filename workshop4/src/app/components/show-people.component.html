@@ -1,7 +1,7 @@
 <mat-toolbar color ='primary' fxLayout = "row column" fxLayoutAlign =  "space-between center">
 
     <span fxLayout = "row column" fxLayoutAlign =  "start center">
-      <img src="/assets/Star_Wars_icon.png" class = "icon">
+      <img src="assets/Star_Wars_icon.png" class = "icon">
       Star Wars
     </span>
       
@@ -10,10 +10,10 @@
       
   </mat-toolbar>
 
-<mat-card class="card" (swiperight)="goBack()">
+<mat-card class="card" (swiperight)="goBack()" (pandown)="scrollPage($event)" (panup)="scrollPage($event)">
     <mat-card-header>
-      <mat-card-title>{{ people?.name }}</mat-card-title>
-      <mat-card-subtitle>{{ people?.birth_year }}</mat-card-subtitle>
+      <mat-card-title>Character Name : {{ people?.name }}</mat-card-title>
+      <mat-card-subtitle>Birth Year : {{ people?.birth_year }}</mat-card-subtitle>
     </mat-card-header>
     <img [src]="people?.image" mat-card-image>
     <mat-card-content>
