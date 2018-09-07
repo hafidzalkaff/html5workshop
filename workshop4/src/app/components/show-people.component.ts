@@ -49,7 +49,7 @@ export class ShowPeopleComponent implements OnInit {
     navigator['share']({
       title: `Star Wars!`,
       text: `Sharing ${this.people.name} with the world!`,
-      url: 'https://github.com/hafidzalkaff/html5workshop1'
+      url: 'https://github.com/hafidzalkaff/html5workshop'
     })
   }
 
