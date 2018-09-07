@@ -41,16 +41,5 @@ export class StarWarsDatabaseService {
         );
     }
 
-    /*
-    findAddress(pattern: RegExp): Promise<People[]> {
-        return (
-            this.db['swdb']
-                .orderBy('name')
-                .filter(ppl => {
-                    return (pattern.test(ppl.name));
-                })
-                .toArray() //returns a promise
-        );
-    }
-    */
+    
 }

@@ -36,33 +36,58 @@ export class AppComponent {
     this.swdbsvc.find(this.form.value.peopleId)
       .then(
         (result:People) => { //resolve
-          console.log('found it: ', result);
-          this.people = this.people || result;
-          return(null);
+          console.log('found it from cache: ', result);
+          this.people = result;
+          throw false;
+          //return(null);
         },
         (datarejectid) => { //reject
           console.log('not in database: ',datarejectid);
-          this.starwarssvc.searchPeople.bind(this.starwarssvc) //reject
+          return (datarejectid);
+          this.starwarssvc.searchPeople.bind(this.starwarssvc) 
         }
       )
       .then(
-        this.swdbsvc.save.bind(this.swdbsvc)
+        this.starwarssvc.searchPeople.bind(this.starwarssvc)
       )
+        .then((result:People) => {
+          console.log('this.people: ', this.people)
+          this.people = this.people || result;
+          return (result);
+        })
+        .then(
+          this.swdbsvc.save.bind(this.swdbsvc)
+        )
       .catch (err => {
-        console.error('err: ',err)
+        if(err)
+          console.error('err: ',err)
       })
-      
-    
+          
+    /*
     this.starwarssvc.searchPeople(this.form.value.peopleId)
       //.then(this.swdbsvc.save.bind(this.swdbsvc))          //Can use this provided the function has 1 parameter
+      
       .then(result => {
         console.log('result: ', result);
         this.swdbsvc.save(result);
       })
       .then(err => {
         console.log('err: ', err);
-      })
+      })*/
     this.form.resetForm();
+  }
+
+  @ViewChild('queryform')
+  queryform: NgForm;
+
+  query(){
+    console.log('category: ', this.queryform.value.catId);
+    console.log('character id: ', this.queryform.value.characId);
+  
+    this.starwarssvc.getItem(this.queryform.value.catId, this.queryform.value.characId)
+    .then((result)=> {console.log('resultgetitem : ', result)})
+    .catch((error)=> {console.log('errorgetitem : ',error)})
+
   }
 
 }

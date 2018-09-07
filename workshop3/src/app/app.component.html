@@ -6,7 +6,24 @@
   <button type="submit" name="Search" [disabled]="form.invalid">Search</button>
 
 </form>
+<br>
+<br>
 
+<form  #queryform="ngForm" (ngSubmit)="query(queryform)">
+  Category : 
+  <select name="catId" required ngModel>
+    <option value="planets">planets</option>
+    <option value="spaceships">spaceships</option>
+    <option value="vehicles">vehicles</option>
+    <option value="people">people</option>
+    <option value="films">films</option>
+    <option value="species">species</option>
+  </select>
+  People ID : 
+  <input type="number" name="characId" min="1" required ngModel>
+  <button type="submit" name="Get" [disabled]="queryform.invalid">Get</button>
+
+</form>
 
 
 
