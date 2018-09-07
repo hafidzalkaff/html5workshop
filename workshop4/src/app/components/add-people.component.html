@@ -11,7 +11,7 @@
     
 </mat-toolbar>
 
-<form #form="ngForm" (ngSubmit)="save(form)" fxLayout="column row" fxLayoutGap="10px">
+<form #form="ngForm" (ngSubmit)="save()" fxLayout="column row" fxLayoutGap="10px">
   <mat-form-field>
     <input type="number" name="peopleId" placeholder="Enter a number between 1 to 88." 
         ngModel required matInput min="1" max="88">
@@ -23,8 +23,7 @@
         <mat-icon>clear</mat-icon>
       Clear
     </button>
-    <button type="submit" [disabled]="form.invalid"
-        mat-raised-button color="warn">
+    <button type="submit" [disabled]="form.invalid" mat-raised-button color="warn">
         <mat-icon>add</mat-icon>
       Add
     </button>
