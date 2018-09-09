@@ -77,7 +77,7 @@ export class ShowPeopleComponent implements OnInit {
     else if(event.type == "pandown"){
       console.log('scrollUp');
     }
-    window.scroll(0,event.deltaY);
+    window.scroll(0,(event.deltaY*(-1)));
   }
 
   goBack(){

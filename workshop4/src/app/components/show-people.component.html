@@ -10,7 +10,7 @@
       
   </mat-toolbar>
 
-<mat-card class="card" (swiperight)="goBack()" ><!-- (pandown)="scrollPage($event)" (panup)="scrollPage($event)"-->
+<mat-card class="card" (swiperight)="goBack()" (pandown)="scrollPage($event)" (panup)="scrollPage($event)"><!-- -->
     <mat-card-header>
       <mat-card-title>Character Name : {{ people?.name }}</mat-card-title>
       <mat-card-subtitle>Birth Year : {{ people?.birth_year }}</mat-card-subtitle>
