@@ -35,8 +35,8 @@ export class ShowPeopleComponent implements OnInit {
         console.log('result: ', result);
       })
       .catch(err => {
-        this.snackBar.open(`Not found ${cid}`, '', {
-          duration: 2000
+        this.snackBar.open(`${cid} not found in swapi.co`, "Dismiss", {
+          duration: 5000
         })
         .afterDismissed().toPromise()
         .then(() => {
@@ -46,11 +46,26 @@ export class ShowPeopleComponent implements OnInit {
   }
 
   share() {
-    navigator['share']({
-      title: `Star Wars!`,
-      text: `Sharing ${this.people.name} with the world!`,
-      url: 'https://github.com/hafidzalkaff/html5workshop'
-    })
+    //console.log('this.canShare', this.canShare);
+    if(this.canShare){
+      navigator['share']({
+        title: `Star Wars!`,
+        text: `Sharing ${this.people.name} with the world!`,
+        url: `https://hafidzalkaff.github.io/html5workshop/`
+      })
+      .then((resultShare)=>{
+        console.log('Successful share');
+      })
+      .catch((errShare)=>{
+        console.log('Error sharing: ',errShare);
+        
+      })
+    }
+    else{
+      this.snackBar.open(`Unfortunately, this feature is not supported on your browser.`, 'Dismiss', {
+        duration: 5000
+      })
+    }    
   }
 
   scrollPage(event:any){

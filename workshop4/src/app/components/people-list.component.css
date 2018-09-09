@@ -1,0 +1,14 @@
+.listImage{
+    height: 40px;
+    margin: 10px;
+}
+
+.mat-subheader { 
+    color: #666666; font-weight: 600; font-size: 20px; 
+}
+
+.listMessage {
+    margin: 10px;
+    flex-wrap: wrap;
+    word-wrap: inherit;
+}

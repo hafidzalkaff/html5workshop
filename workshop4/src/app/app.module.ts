@@ -12,6 +12,9 @@ import { StarWarsDatabaseService } from './starwars.storage.service';
 import { StarWarsService } from './starwars.service';
 import { AddPeopleComponent } from './components/add-people.component';
 import { ShowPeopleComponent } from './components/show-people.component';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
+import { customHammerConfig } from './custom.hammer.config';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { ShowPeopleComponent } from './components/show-people.component';
     MaterialModule,
     AppRoutesModule
   ],
-  providers: [StarWarsDatabaseService, StarWarsService], // Add Services
+  providers: [StarWarsDatabaseService, StarWarsService, {provide:HAMMER_GESTURE_CONFIG, useClass: customHammerConfig}], // Add Services , useclass: customHammerConfig
   bootstrap: [AppComponent]
 })
 export class AppModule { }

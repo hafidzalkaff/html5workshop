@@ -11,9 +11,24 @@
 
 </mat-toolbar>
 
-<mat-nav-list>
-    <h2 mat-sub-header>Characters</h2>
-    <a *ngFor="let p of people" [routerLink]="['/show', p.id]" mat-list-item>{{p.name}} ({{p.id}})</a>
+<div *ngIf="people.length == 0">
+  <br/>
+    <p mat-line class="listMessage">No character found. Please click on the add (+) button to add Star Wars characters.</p>
+</div>
 
-          <!--[routerLink]="'/detail', p.id"-->
-  </mat-nav-list>
+<mat-nav-list *ngIf="people.length > 0">
+  <h2 mat-subheader>Star Wars Characters</h2>
+    
+  <a *ngFor="let p of people" [routerLink]="['/show', p.id]" mat-list-item>
+    <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    <div>
+      <img [src]="p.image" class="listImage">
+    </div>
+    <div >
+      <span mat-line>{{p.name}}</span>
+      <span mat-line><mat-hint>ID in <a href="https://swapi.co" target="_blank">swapi.co</a> : {{p.id}}</mat-hint></span> 
+    </div>
+      
+  </a>
+    
+</mat-nav-list>

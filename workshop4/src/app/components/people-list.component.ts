@@ -3,6 +3,7 @@ import { StarWarsDatabaseService } from '../starwars.storage.service';
 import { People } from '../model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';  
 
 @Component({
   selector: 'app-people-list',
