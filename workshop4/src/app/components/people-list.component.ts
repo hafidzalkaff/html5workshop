@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class PeopleListComponent implements OnInit {
 
   people:People[] = [];
-  private currentPpl: People[] = [];
+  
   private tabs = [
     {label: 'A-E', pattern: /^[a-e].*/i}, 
     {label: 'F-J', pattern: /^[f-j].*/i}, 
