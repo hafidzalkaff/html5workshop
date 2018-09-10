@@ -15,7 +15,7 @@ export class PeopleListComponent implements OnInit {
 
   people:People[] = [];
   
-  private tabs = [
+  public tabs = [
     {label: 'A-E', pattern: /^[a-e].*/i}, 
     {label: 'F-J', pattern: /^[f-j].*/i}, 
     {label: 'K-O', pattern: /^[k-o].*/i}, 
