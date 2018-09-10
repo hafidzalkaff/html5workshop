@@ -27,12 +27,14 @@ export class ShowPeopleComponent implements OnInit {
 
   ngOnInit() {
     this.canShare = !!navigator['share'];
-    const cid = parseInt(this.activatedRoute.snapshot.params.pId)
-    console.log('> pid = ', cid);
+    const cid = parseInt(this.activatedRoute.snapshot.params.pId);
+    const tabSel = parseInt(this.activatedRoute.snapshot.queryParams.tab);
+    console.log('> tabSel = ', tabSel);
     this.swdbSvc.find(cid)
       .then(result => {
-        this.people = result
+        this.people = result;
         console.log('result: ', result);
+        //this.router.navigate(['/'],{queryParams:{tab: tabSel}});
       })
       .catch(err => {
         this.snackBar.open(`${cid} not found in swapi.co`, "Dismiss", {
@@ -40,7 +42,7 @@ export class ShowPeopleComponent implements OnInit {
         })
         .afterDismissed().toPromise()
         .then(() => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/'],{queryParams:{tab: tabSel}});
         })
       });
   }
@@ -81,7 +83,8 @@ export class ShowPeopleComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['/']);
+    const tabSel = parseInt(this.activatedRoute.snapshot.queryParams.tab);
+    this.router.navigate(['/'],{queryParams:{tab: tabSel}});
   }
 
 }

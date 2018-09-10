@@ -1,6 +1,6 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { StarWarsDatabaseService } from '../starwars.storage.service';
 import { StarWarsService } from '../starwars.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,13 +17,15 @@ export class AddPeopleComponent implements OnInit {
 
   people: People = null;
 
-  constructor(private router: Router, private swdbSvc: StarWarsDatabaseService, private swSvc: StarWarsService, private snackBar : MatSnackBar ) { }
+  constructor(private router: Router, private activatedRoute:ActivatedRoute,  private swdbSvc: StarWarsDatabaseService, private swSvc: StarWarsService, private snackBar : MatSnackBar ) { }
 
   ngOnInit() {
   }
 
   goBack(){
-    this.router.navigate(['/']);
+    const tabSel = parseInt(this.activatedRoute.snapshot.queryParams.tab);
+    console.log('addgoback', tabSel);
+    this.router.navigate(['/'],{queryParams:{tab: tabSel}});
   }
 
   @ViewChild('form')
@@ -32,13 +34,13 @@ export class AddPeopleComponent implements OnInit {
   save(){
     console.log('Save with ID: ', this.form.value.peopleId);
     this.people = null;
-    
+    const tabSel = parseInt(this.activatedRoute.snapshot.queryParams.tab);
     this.swdbSvc.find(this.form.value.peopleId)
       .then(
         (result) => { //resolve
           console.log('from cache: ', result)
           this.snackBar.open("Record already exists!","Dismiss",{duration: 5000});
-          this.router.navigate(['/']);
+          this.router.navigate(['/'],{queryParams:{tab: tabSel}});
           
           throw false;
         },
@@ -48,7 +50,7 @@ export class AddPeopleComponent implements OnInit {
       .then((id) => {
         console.log('id:', id);
         this.router.navigate(['/'],{
-          queryParams: { message:`Saved Input (${id})` }
+          queryParams: { message:`Saved Input (${id})`, tab: tabSel }
         });
       })
       .catch(err => {
@@ -57,7 +59,7 @@ export class AddPeopleComponent implements OnInit {
         }
         console.error('err: ', err);
         this.router.navigate(['/'],{
-          queryParams: { message:`Error - (${err})` }
+          queryParams: { message:`Error - (${err})`, tab: tabSel }
         });
       })
       this.form.resetForm();

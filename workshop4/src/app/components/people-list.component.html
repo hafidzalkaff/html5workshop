@@ -1,34 +1,39 @@
 <mat-toolbar color ='primary' fxLayout = "row column" fxLayoutAlign =  "space-between center">
 
 <span fxLayout = "row column" fxLayoutAlign =  "start center">
-  <img src="assets/Star_Wars_icon.png" class = "icon">
+  <a href = "#"><img src="assets/Star_Wars_icon.png" class = "icon"></a>
   Star Wars
 </span>
+
   
   
 <button type="button" mat-icon-button color = "accent" (click)="addPeople()"> <!--[routerLink]="['add']"-->
   <mat-icon>add_circle</mat-icon></button>
 
 </mat-toolbar>
+<h2 mat-subheader>Star Wars Characters</h2>
 
-<div *ngIf="people.length == 0">
-  <br/>
-    <p mat-line class="listMessage">No character found. Please click on the add (+) button to add Star Wars characters.</p>
-</div>
-
-<mat-nav-list *ngIf="people.length > 0">
-  <h2 mat-subheader>Star Wars Characters</h2>
-    
-  <a *ngFor="let p of people" [routerLink]="['/show', p.id]" mat-list-item>
-    <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-    <div>
-      <img [src]="p.image" class="listImage">
+<mat-tab-group (selectedTabChange) = "loadPeople($event)" [selectedIndex]="currentTab">
+  <mat-tab *ngFor="let t of tabs" [label] = "t.label" >
+    <div *ngIf="people.length == 0">
+      <br/>
+        <p mat-line class="listMessage">No character found. Please click on the add (+) button to add Star Wars characters.</p>
     </div>
-    <div >
-      <span mat-line>{{p.name}}</span>
-      <span mat-line><mat-hint>ID in <a href="https://swapi.co" target="_blank">swapi.co</a> : {{p.id}}</mat-hint></span> 
-    </div>
+        
+    <mat-nav-list *ngIf="people.length > 0">
       
-  </a>
-    
-</mat-nav-list>
+            
+      <a *ngFor="let p of people" [routerLink]="['/show', p.id]" [queryParams]="{tab: currentTab}" mat-list-item>
+        <mat-divider [inset]="true" *ngIf="!last">
+        </mat-divider>
+        <div>
+          <img [src]="p.image" class="listImage">
+        </div>
+        <div >
+          <span mat-line>{{p.name}}</span>
+          <span mat-line><mat-hint>ID in <a href="https://swapi.co" target="_blank">swapi.co</a> : {{p.id}}</mat-hint></span> 
+        </div>    
+      </a>      
+    </mat-nav-list>
+  </mat-tab>
+</mat-tab-group>

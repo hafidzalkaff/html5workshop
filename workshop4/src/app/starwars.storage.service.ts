@@ -19,11 +19,13 @@ export class StarWarsDatabaseService {
         });
     }
 
-    getAll(): Promise<People[]> {
+    getAll(pattern: RegExp): Promise<People[]> {
         return(
             this.db['people'].orderBy('name')
+                .filter(ppl => {
+                    return (pattern.test(ppl.name));
+                })
                 .toArray()
-
         );
     }
 

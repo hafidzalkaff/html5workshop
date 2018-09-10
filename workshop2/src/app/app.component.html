@@ -15,6 +15,7 @@
       <mat-list-item > No address found.
       </mat-list-item>
     </mat-list>
+    
     <mat-list *ngIf="outputAddress.length > 0">
         <app-address-list></app-address-list>
         <mat-list-item *ngFor="let o of outputAddress" > 

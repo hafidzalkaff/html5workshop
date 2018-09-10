@@ -4,7 +4,10 @@
 }
 
 .mat-subheader { 
-    color: #666666; font-weight: 600; font-size: 20px; 
+    color: #666666; 
+    font-weight: 600; 
+    font-size: 20px; 
+    margin: 0;
 }
 
 .listMessage {
