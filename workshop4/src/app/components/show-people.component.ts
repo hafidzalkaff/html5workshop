@@ -74,10 +74,10 @@ export class ShowPeopleComponent implements OnInit {
     //console.log('event:', event);
 
     if(event.type == "panup"){
-      console.log('scrollDown');
+      //console.log('scrollDown');
     }
     else if(event.type == "pandown"){
-      console.log('scrollUp');
+      //console.log('scrollUp');
     }
     window.scroll(0,(event.deltaY*(-1)));
   }
